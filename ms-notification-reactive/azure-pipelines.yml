@@ -1,0 +1,110 @@
+trigger:
+- master
+- develop
+- qa
+
+pool:
+  vmImage: ubuntu-latest
+  workspace:
+    clean: all
+
+resources:
+- repo: self
+
+variables:
+  tag: '$(Build.BuildId)'
+  imageRepo: 'portal-phoenix'
+  imageName: '$(Build.Repository.Name)'
+  imageVersion: '$(Build.SourceBranchName)'
+
+stages:
+- stage: Build
+  displayName: 'Compilação Java e Build Docker'
+  jobs:
+  - job: CompileAndPush
+    displayName: 'Compilação Maven e Build Docker'
+    steps:
+    - checkout: self
+      fetchDepth: 0
+    
+    - task: Maven@3
+      displayName: 'Pacote Maven'
+      inputs:
+        mavenPomFile: 'pom.xml'
+        jdkVersionOption: '1.17'
+        goals: 'clean package'
+        publishJUnitResults: false
+        javaHomeOption: 'JDKVersion'
+        mavenVersionOption: 'Default'
+        mavenAuthenticateFeed: false
+        effectivePomSkip: false
+        sonarQubeRunAnalysis: false
+
+    - task: Docker@2
+      displayName: 'Build e Push Docker'
+      inputs:
+        containerRegistry: 'acr-arphoenixbr'
+        repository: '$(imageRepo)/$(imageName)'
+        command: 'buildAndPush'
+        Dockerfile: 'target/Dockerfile'
+        buildContext: 'target'
+        tags: '$(tag)'
+    
+    - task: PublishPipelineArtifact@1
+      displayName: 'Publicar Artefato do Pipeline'
+      inputs:
+        targetPath: '$(Pipeline.Workspace)/s/target/kubernetes'
+        artifact: 'manifests'
+        publishLocation: 'pipeline'
+
+- stage: SecOps
+  displayName: 'Segurança e Operações'
+  dependsOn: Build
+  jobs:
+  - job: SecurityScan
+    displayName: 'Análise de Segurança'
+    steps:
+    - task: DownloadPipelineArtifact@2
+      displayName: 'Baixar Artefato do Pipeline'
+      inputs:
+        buildType: 'current'
+        artifactName: 'manifests'
+        itemPattern: '**/*.yml'
+        targetPath: '$(Pipeline.Workspace)/manifests'
+
+    - task: trivy@1
+      displayName: 'Trivy Vuln Scan nos Arquivos de Configuração'
+      inputs:
+        version: 'v0.51.2'
+        docker: false
+        debug: true
+        path: '$(Pipeline.Workspace)/manifests'
+        severities: 'HIGH,CRITICAL'
+        exitCode: '0'
+
+    - task: Docker@2
+      displayName: 'Login no Azure Container Registry (ACR)'
+      inputs:
+        command: 'login'
+        containerRegistry: 'acr-arphoenixbr'
+      
+    - task: trivy@1
+      displayName: 'Trivy Vuln Scan na Imagem Docker'
+      inputs:
+        version: 'v0.51.2'
+        debug: true
+        loginDockerConfig: true
+        image: 'arphoenixbr.azurecr.io/$(imageRepo)/$(imageName):$(tag)'
+        severities: 'HIGH,CRITICAL'
+        exitCode: '0'
+      
+    - task: Gitleaks@2
+      displayName: 'Verificação de Vazamento de Informações no Git'
+      inputs:
+        scanlocation: '$(Build.SourcesDirectory)'
+        configtype: 'predefined'
+        predefinedconfigfile: 'GitleaksUdmCombo.toml'
+        scanmode: 'nogit'
+        taskfail: false
+        reportformat: 'sarif'
+        reportname: 'devsecops-gitleaks'

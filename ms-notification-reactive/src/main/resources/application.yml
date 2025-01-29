@@ -1,0 +1,86 @@
+server:
+  compression:
+    enabled: true
+  port: 8080
+  servlet:
+    context-path: /ms-notification-reactive
+arlepton:
+  features:
+    cors:
+      enable: true
+      allowedOrigins: http://localhost:3000, http://localhost:5000, https://arlepton.com, http://localhost:8080
+spring:
+  application:
+    name: Microservice Send Notifications with Kafka Reactive
+  main:
+    allow-bean-definition-overriding: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher     
+  banner:
+    location: classpath:bann.txt
+  messages:
+    basename: i18n/messages
+  datasource:
+    url: ${DB_URL:jdbc:sqlserver://10.120.0.7:1433;databaseName=WIA;encrypt=true;trustServerCertificate=true}
+    username: ${DB_USERNAME:wia}
+    password: ${DB_PASSWORD:phoenix01}
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    hikari:
+      maximum-pool-size: 3       # Define o máximo de conexões simultâneas no pool
+      minimum-idle: 5            # Número mínimo de conexões ociosas no pool
+      idle-timeout: 300000        # Tempo (em ms) para manter conexões ociosas antes de fechá-las (padrão: 10 min)
+      connection-timeout: 20000   # Tempo máximo (em ms) para esperar uma conexão do pool (padrão: 30s)
+      poolName: wia-connection-pool
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      ddl-auto: none
+    database: SQL_SERVER
+    open-in-view: false
+    properties:
+      hibernate:
+        '[format_sql]': true
+        jdbc:
+          lob:
+            '[non_contextual_creation]': true
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: notification-group
+      auto-offset-reset: earliest
+      enable-auto-commit: false
+      max-poll-records: 50
+    producer:
+      retries: 3
+      acks: all
+
+springdoc:
+  info:
+    title: "Kafka Reactive"
+    version: 1.0
+    description: "Kafka Reactive API Docs."
+  base-package: "com.wia.implementation"
+
+management:
+  endpoint:
+    health:
+      group:
+        liveness:
+          include:
+            - db
+      show-details: "ALWAYS"
+  endpoints:
+    web:
+      exposure:
+        include: health
+logging:
+  level:
+    root: INFO
+    '[com.wia.implementation]': INFO
+    '[org.springframework.boot.context]': INFO
+    '[org.hibernate.SQL]': DEBUG
+    '[org.hibernate.type.descriptor.sql.BasicBinder]': TRACE
+    '[org.hibernate.engine.transaction.jta.platform]': WARN
+    '[org.springframework.security]': DEBUG

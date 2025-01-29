@@ -1,0 +1,332 @@
+{"properties": [
+  {
+    "name": "ms-email-producer.uri",
+    "type": "java.lang.String",
+    "description": "A description for 'ms-email-producer.uri'"
+  },
+  {
+    "name": "multitenancy.url-portal-phoenix",
+    "type": "java.lang.String",
+    "description": "A description for 'multitenancy.url-portal-phoenix'"
+  },
+  {
+    "name": "multitenancy.mtapp.master.datasource.platform",
+    "type": "java.lang.String",
+    "description": "A description for 'multitenancy.mtapp.master.datasource.platform'"
+  },
+  {
+    "name": "multitenancy.mtapp.master.datasource.url",
+    "type": "java.lang.String",
+    "description": "A description for 'multitenancy.mtapp.master.datasource.url'"
+  },
+  {
+    "name": "multitenancy.mtapp.master.datasource.username",
+    "type": "java.lang.String",
+    "description": "A description for 'multitenancy.mtapp.master.datasource.username'"
+  },
+  {
+    "name": "multitenancy.mtapp.master.datasource.password",
+    "type": "java.lang.String",
+    "description": "A description for 'multitenancy.mtapp.master.datasource.password'"
+  },
+  {
+    "name": "multitenancy.mtapp.master.datasource.driverClassName",
+    "type": "java.lang.String",
+    "description": "A description for 'multitenancy.mtapp.master.datasource.driverClassName'"
+  },
+  {
+    "name": "multitenancy.mtapp.master.datasource.connectionTimeout",
+    "type": "java.lang.String",
+    "description": "A description for 'multitenancy.mtapp.master.datasource.connectionTimeout'"
+  },
+  {
+    "name": "multitenancy.mtapp.master.datasource.maxPoolSize",
+    "type": "java.lang.String",
+    "description": "A description for 'multitenancy.mtapp.master.datasource.maxPoolSize'"
+  },
+  {
+    "name": "multitenancy.mtapp.master.datasource.idleTimeout",
+    "type": "java.lang.String",
+    "description": "A description for 'multitenancy.mtapp.master.datasource.idleTimeout'"
+  },
+  {
+    "name": "multitenancy.mtapp.master.datasource.poolName",
+    "type": "java.lang.String",
+    "description": "A description for 'multitenancy.mtapp.master.datasource.poolName'"
+  },
+  {
+    "name": "multitenancy.mtapp.master.datasource.minIdle",
+    "type": "java.lang.String",
+    "description": "A description for 'multitenancy.mtapp.master.datasource.minIdle'"
+  },
+  {
+    "name": "multitenancy.mtapp.master.jpa.hibernate.ddl-auto",
+    "type": "java.lang.String",
+    "description": "A description for 'multitenancy.mtapp.master.jpa.hibernate.ddl-auto'"
+  },
+  {
+    "name": "multitenancy.mtapp.master.jpa.database",
+    "type": "java.lang.String",
+    "description": "A description for 'multitenancy.mtapp.master.jpa.database'"
+  },
+  {
+    "name": "multitenancy.mtapp.master.jpa.open-in-view",
+    "type": "java.lang.String",
+    "description": "A description for 'multitenancy.mtapp.master.jpa.open-in-view'"
+  },
+  {
+    "name": "multitenancy.mtapp.master.jpa.database-platform",
+    "type": "java.lang.String",
+    "description": "A description for 'multitenancy.mtapp.master.jpa.database-platform'"
+  },
+  {
+    "name": "multitenancy.mtapp.master.jpa.properties.hibernate.jdbc.lob.non_contextual_creation",
+    "type": "java.lang.String",
+    "description": "A description for 'multitenancy.mtapp.master.jpa.properties.hibernate.jdbc.lob.non_contextual_creation'"
+  },
+  {
+    "name": "multitenancy.mtapp.master.jpa.properties.hibernate.format_sql",
+    "type": "java.lang.String",
+    "description": "A description for 'multitenancy.mtapp.master.jpa.properties.hibernate.format_sql'"
+  },
+  {
+    "name": "multitenancy.mtapp.master.jpa.properties.hibernate.use_sql_comments",
+    "type": "java.lang.String",
+    "description": "A description for 'multitenancy.mtapp.master.jpa.properties.hibernate.use_sql_comments'"
+  },
+  {
+    "name": "springfox.documentation.info.title",
+    "type": "java.lang.String",
+    "description": "A description for 'springfox.documentation.info.title'"
+  },
+  {
+    "name": "springfox.documentation.info.description",
+    "type": "java.lang.String",
+    "description": "A description for 'springfox.documentation.info.description'"
+  },
+  {
+    "name": "springfox.documentation.info.version",
+    "type": "java.lang.String",
+    "description": "A description for 'springfox.documentation.info.version'"
+  },
+  {
+    "name": "springfox.documentation.base-package",
+    "type": "java.lang.String",
+    "description": "A description for 'springfox.documentation.base-package'"
+  },
+  {
+    "name": "email.geral.from",
+    "type": "java.lang.String",
+    "description": "A description for 'email.geral.from'"
+  },
+  {
+    "name": "multitenancy.mtapp.tenant.prefixo-password",
+    "type": "java.lang.String",
+    "description": "A description for 'multitenancy.mtapp.tenant.prefixo-password'"
+  },
+  {
+    "name": "springdoc.info.title",
+    "type": "java.lang.String",
+    "description": "A description for 'springdoc.info.title'"
+  },
+  {
+    "name": "springdoc.info.version",
+    "type": "java.lang.String",
+    "description": "A description for 'springdoc.info.version'"
+  },
+  {
+    "name": "springdoc.info.description",
+    "type": "java.lang.String",
+    "description": "A description for 'springdoc.info.description'"
+  },
+  {
+    "name": "springdoc.base-package",
+    "type": "java.lang.String",
+    "description": "A description for 'springdoc.base-package'"
+  },
+  {
+    "name": "server.name",
+    "type": "java.lang.String",
+    "description": "A description for 'server.name'"
+  },
+  {
+    "name": "arlepton.features.security.expiration-in-seconds-token",
+    "type": "java.lang.String",
+    "description": "A description for 'arlepton.features.security.expiration-in-seconds-token'"
+  },
+  {
+    "name": "arlepton.features.security.expirationInSecondsRefreshToken",
+    "type": "java.lang.String",
+    "description": "A description for 'arlepton.features.security.expirationInSecondsRefreshToken'"
+  },
+  {
+    "name": "arlepton.features.security.timeZoneId",
+    "type": "java.lang.String",
+    "description": "A description for 'arlepton.features.security.timeZoneId'"
+  },
+  {
+    "name": "arlepton.features.cors.enable",
+    "type": "java.lang.String",
+    "description": "A description for 'arlepton.features.cors.enable'"
+  },
+  {
+    "name": "arlepton.features.cors.allowedOrigins",
+    "type": "java.lang.String",
+    "description": "A description for 'arlepton.features.cors.allowedOrigins'"
+  },
+  {
+    "name": "arlepton.features.email.enable",
+    "type": "java.lang.String",
+    "description": "A description for 'arlepton.features.email.enable'"
+  },
+  {
+    "name": "arlepton.features.email.protocol",
+    "type": "java.lang.String",
+    "description": "A description for 'arlepton.features.email.protocol'"
+  },
+  {
+    "name": "arlepton.features.email.port",
+    "type": "java.lang.String",
+    "description": "A description for 'arlepton.features.email.port'"
+  },
+  {
+    "name": "arlepton.features.email.host",
+    "type": "java.lang.String",
+    "description": "A description for 'arlepton.features.email.host'"
+  },
+  {
+    "name": "arlepton.features.email.username",
+    "type": "java.lang.String",
+    "description": "A description for 'arlepton.features.email.username'"
+  },
+  {
+    "name": "arlepton.features.email.password",
+    "type": "java.lang.String",
+    "description": "A description for 'arlepton.features.email.password'"
+  },
+  {
+    "name": "arlepton.features.email.debug",
+    "type": "java.lang.String",
+    "description": "A description for 'arlepton.features.email.debug'"
+  },
+  {
+    "name": "arlepton.features.email.recovery-password.domain",
+    "type": "java.lang.String",
+    "description": "A description for 'arlepton.features.email.recovery-password.domain'"
+  },
+  {
+    "name": "arlepton.features.email.recovery-password.token-ttl-minutes",
+    "type": "java.lang.String",
+    "description": "A description for 'arlepton.features.email.recovery-password.token-ttl-minutes'"
+  },
+  {
+    "name": "arlepton.features.email.smtp.auth",
+    "type": "java.lang.String",
+    "description": "A description for 'arlepton.features.email.smtp.auth'"
+  },
+  {
+    "name": "arlepton.features.email.smtp.starttls.enable",
+    "type": "java.lang.String",
+    "description": "A description for 'arlepton.features.email.smtp.starttls.enable'"
+  },
+  {
+    "name": "arlepton.features.email.smtp.starttls.require",
+    "type": "java.lang.String",
+    "description": "A description for 'arlepton.features.email.smtp.starttls.require'"
+  },
+  {
+    "name": "server.servlet.multipart.max-file-size",
+    "type": "java.lang.String",
+    "description": "A description for 'server.servlet.multipart.max-file-size'"
+  },
+  {
+    "name": "server.servlet.multipart.max-request-size",
+    "type": "java.lang.String",
+    "description": "A description for 'server.servlet.multipart.max-request-size'"
+  },
+  {
+    "name": "server.servlet.tomcat.max-swallow-size",
+    "type": "java.lang.String",
+    "description": "A description for 'server.servlet.tomcat.max-swallow-size'"
+  },
+  {
+    "name": "server.servlet.tomcat.max-http-form-post-size",
+    "type": "java.lang.String",
+    "description": "A description for 'server.servlet.tomcat.max-http-form-post-size'"
+  },
+  {
+    "name": "wia.upload.directory",
+    "type": "java.lang.String",
+    "description": "A description for 'wia.upload.directory'"
+  },
+  {
+    "name": "wia.upload.whats-moving-market",
+    "type": "java.lang.String",
+    "description": "A description for 'wia.upload.whats-moving-market'"
+  },
+  {
+    "name": "server.tomcat.thread-name-prefix",
+    "type": "java.lang.String",
+    "description": "A description for 'server.tomcat.thread-name-prefix'"
+  },
+  {
+    "name": "wia.upload.static-data",
+    "type": "java.lang.String",
+    "description": "A description for 'wia.upload.static-data'"
+  },
+  {
+    "name": "monitoring.interval.minutes",
+    "type": "java.lang.String",
+    "description": "A description for 'monitoring.interval.minutes'"
+  },
+  {
+    "name": "monitoring.fixed-rate.ms",
+    "type": "java.lang.String",
+    "description": "A description for 'monitoring.fixed-rate.ms'"
+  },
+  {
+    "name": "whatsapp.account-sid",
+    "type": "java.lang.String",
+    "description": "A description for 'whatsapp.account-sid'"
+  },
+  {
+    "name": "whatsapp.auth-token",
+    "type": "java.lang.String",
+    "description": "A description for 'whatsapp.auth-token'"
+  },
+  {
+    "name": "whatsapp.from-number",
+    "type": "java.lang.String",
+    "description": "A description for 'whatsapp.from-number'"
+  },
+  {
+    "name": "whatsapp.to-number",
+    "type": "java.lang.String",
+    "description": "A description for 'whatsapp.to-number'"
+  },
+  {
+    "name": "interactive-midia.directory",
+    "type": "java.lang.String",
+    "description": "A description for 'interactive-midia.directory'"
+  },
+  {
+    "name": "arlepton.features.security.expirationUserSession",
+    "type": "java.lang.String",
+    "description": "A description for 'arlepton.features.security.expirationUserSession'"
+  },
+  {
+    "name": "arlepton.features.email.to",
+    "type": "java.lang.String",
+    "description": "A description for 'arlepton.features.email.to'"
+  },
+  {
+    "name": "arlepton.features.email.cc",
+    "type": "java.lang.String",
+    "description": "A description for 'arlepton.features.email.cc'"
+  },
+  {
+    "name": "wia.upload.compliance",
+    "type": "java.lang.String",
+    "description": "A description for 'wia.upload.compliance'"
+  }
+]}

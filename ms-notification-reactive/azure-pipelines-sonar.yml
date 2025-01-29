@@ -1,0 +1,53 @@
+trigger:
+- develop
+
+pool:
+  vmImage: ubuntu-latest
+  workspace:
+    clean: all
+
+resources:
+- repo: self
+
+stages:
+- stage: CodeQuality
+  displayName: 'Análise de Qualidade de Código'
+  jobs:
+  - job: SonarQubeAnalysis
+    displayName: 'Análise de Código com SonarCloud'
+    steps:
+    - checkout: self
+      fetchDepth: 0
+
+    - task: SonarCloudPrepare@2
+      displayName: 'Preparar Análise do SonarCloud'
+      inputs:
+        SonarCloud: 'SonarCloud01'
+        organization: 'arphoenix'
+        scannerMode: 'Other'
+        extraProperties: |
+          sonar.coverage.exclusions=**/*
+          sonar.projectKey=ARPhoenix_$(Build.Repository.Name)
+          sonar.projectName=$(Build.Repository.Name)
+        
+    - task: Maven@3
+      displayName: 'Pacote Maven com Análise SonarCloud Java'
+      inputs:
+        mavenPomFile: 'pom.xml'
+        jdkVersionOption: '1.17'
+        goals: 'clean package sonar:sonar'
+        publishJUnitResults: false
+        javaHomeOption: 'JDKVersion'
+        mavenVersionOption: 'Default'
+        mavenAuthenticateFeed: false
+        effectivePomSkip: false
+        options: '-Dsonar.coverage.exclusions=**/*'
+        sonarQubeRunAnalysis: false
+
+    - task: SonarCloudAnalyze@2
+      displayName: 'Analisar Código com SonarCloud'
+    
+    - task: SonarCloudPublish@2
+      displayName: 'Publicar Resultados do SonarCloud'
+      inputs:
+        pollingTimeoutSec: '300'

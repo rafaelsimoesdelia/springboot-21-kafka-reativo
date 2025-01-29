@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-notification-reactive
+spec:
+  selector:
+    matchLabels:
+      app: ms-notification-reactive
+  template:
+    metadata:
+      labels:
+        app: ms-notification-reactive
+      annotations:
+        instrumentation.opentelemetry.io/inject-java: "true"  
+    spec:
+      imagePullSecrets:
+        - name: registry-pull
+      containers:
+        - image: "@docker.registry@/@docker.namespace@/@project.artifactId@:<TAG>"
+          imagePullPolicy: "Always"
+          name: ms-notification-reactive
+          ports:
+            - containerPort: 8080
+          env:
+            - name: AMBIENTE
+              value: hml
+          readinessProbe:
+            httpGet:
+              path: /ms-notification-reactive/actuator/health/readiness
+              port: 8080
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            timeoutSeconds: 5               
+          livenessProbe:
+            httpGet:
+              path: /ms-notification-reactive/actuator/health/liveness
+              port: 8080
+            initialDelaySeconds: 120
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3            
+          envFrom:
+            - configMapRef:
+                name: ms-phoenix-config
+                optional: false

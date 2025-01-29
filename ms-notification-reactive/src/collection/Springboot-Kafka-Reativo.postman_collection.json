@@ -1,0 +1,42 @@
+{
+	"info": {
+		"_postman_id": "b05357cb-0471-40a5-b426-f347cfa7c535",
+		"name": "Springboot-Kafka-Reativo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11727110"
+	},
+	"item": [
+		{
+			"name": "POST /ms-notification-reactive/notifications",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userId\": \"12345\",\r\n  \"type\": \"SMS\",\r\n  \"message\": \"Seu pedido foi aprovado!\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/ms-notification-reactive/notifications",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ms-notification-reactive",
+						"notifications"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
